@@ -27,6 +27,7 @@ public class AddPostServlet extends HttpServlet {
 			String desc = req.getParameter("desc");
 			
 			Jobs j =new Jobs();
+			
 			j.setTitle(title);
 			j.setLocation(location);
 			j.setDescription(desc);
@@ -36,7 +37,9 @@ public class AddPostServlet extends HttpServlet {
 			HttpSession session = req.getSession();
 			
 			jobDAO dao = new jobDAO(DBConnect.getConn());
+			
 			boolean f = dao.addJobs(j);
+			
 			if(f) {
 				session.setAttribute("succMsg","Job Posted Successfully..");
 				resp.sendRedirect("add_job.jsp");

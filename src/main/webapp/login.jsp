@@ -11,7 +11,7 @@
 <%@include file="all_component/all_css.jsp"%>
 
 </head>
-<body style = "background-color: #f0f1f2;">
+<body style="background-color: #f0f1f2;">
      <%@include file="all_component/navbar.jsp"%>
      <div class="container-fluid">
           <div class="row p-5">
@@ -20,16 +20,17 @@
                          <div class="card-body">
                               <div class="text-center">
                                    <i
-                                      class="fa-solid fa-user"
+                                        class="fa-solid fa-user"
                                         aria-hidden="true"
                                    ></i>
                                    <h5>Login Page</h5>
                               </div>
-                              <%-- <c:if test = "${not empty succMsg }">
-<h4 class = "text-center text-danger">${succMsg }</h4>
-<c:remove var = "succMsg" />
-</c:if> --%>
-
+                              
+                              <c:if test="${not empty succMsg }">
+                                   <h4 class="text-center text-danger">${succMsg }</h4>
+                                   <c:remove var="succMsg" />
+                              </c:if>
+                              
                               <form
                                    action="login"
                                    method="post"
@@ -42,8 +43,8 @@
                                              id="exampleInputEmail1"
                                              aria-describedby="emailHelp"
                                              placeholder="Enter email"
-                                             name ="email"
-                                        > 
+                                             name="email"
+                                        >
                                    </div>
                                    <div class="form-group">
                                         <label
@@ -53,7 +54,7 @@
                                              class="form-control"
                                              id="exampleInputPassword1"
                                              placeholder="Password"
-                                             name = "password"
+                                             name="password"
                                         >
                                    </div>
                                    <div class="form-check">
@@ -76,6 +77,6 @@
                     </div>
                </div>
           </div>
-          </div>
+     </div>
 </body>
 </html>

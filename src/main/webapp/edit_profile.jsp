@@ -14,13 +14,19 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Signup Page</title>
+<title>Edit Profile</title>
 <%@include file="all_component/all_css.jsp"%>
 </head>
 <body style="background-color: #f0f1f2;">
+
+  <c:if test="${empty userobj }">
+          <c:redirect url="login.jsp" />
+     </c:if>
+     
+
      <%@include file="all_component/navbar.jsp"%>
      <div class="container-fluid">
-          <div class="row p-5">
+          <div class="row p-4">
                <div class="col-md-4 offset-md-4">
                     <div class="card">
                          <div class="card-body">
@@ -29,17 +35,16 @@
                                         class="fa-solid fa-user-plus"
                                         aria-hidden="true"
                                    ></i>
-                                   <h5>Registration</h5>
+                                   <h5>Edit Profile</h5>
                               </div>
 
-                              <c:if test="${not empty succMsg }">
-                                   <h4 class="text-center text-danger">${succMsg }</h4>
-                                   <c:remove var="succMsg" />
-                              </c:if>
+                         
                               <form
-                                   action="add_user"
+                                   action="update_profile"
                                    method="post"
                               >
+                              <input type ="hidden" name = "id" value ="${userobj.id }">
+                                   
                                    <div class="form-group">
                                         <label>Enter Full Name</label> <input
                                              type="text"
@@ -47,6 +52,7 @@
                                              required="required"
                                              name="name"
                                              aria-describedby="emailHelp"
+                                             value = "${userobj.name }"
                                         >
                                    </div>
                                    <div class="form-group">
@@ -57,6 +63,7 @@
                                              required="required"
                                              name="qua"
                                              aria-describedby="emailHelp"
+                                              value = "${userobj.qualification }"
                                         >
                                    </div>
                                    <div class="form-group">
@@ -68,6 +75,7 @@
                                              aria-describedby="emailHelp"
                                              placeholder="Enter email"
                                              name="email"
+                                              value = "${userobj.email }"
                                         >
                                    </div>
                                    <div class="form-group">
@@ -79,13 +87,14 @@
                                              id="exampleInputPassword1"
                                              placeholder="Password"
                                              name="ps"
+                                              value = "${userobj.password }"
                                         >
                                    </div>
 
                                    <button
                                         type="submit"
                                         class="btn btn-primary badge-pill btn-block"
-                                   >Register</button>
+                                   >Update</button>
                               </form>
                          </div>
                     </div>
